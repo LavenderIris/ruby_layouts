@@ -1,0 +1,40 @@
+
+ <% content_for :title, "Two Column Layout" %>
+    
+
+<% content_for :left_column do %>
+    <h1>Listing all users</h1>
+    <table class="table table-striped">
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Favorite Language</td>
+    </tr>
+
+    <% @users.each do |u| %>
+    <tr>
+        <td><%= u.first_name %></td>
+        <td><%= u.last_name %></td>
+        <td><%= u.favorite_language %></td>
+    </tr>
+    <% end %>
+
+    </table>
+<% end %>
+
+ <%= content_for :right_column do %>
+    <h1>New Users</h1>
+    <% if flash[:errors] %>
+    <% flash[:errors].each do |e| %>
+        <p class="alert alert-danger"><%= e %></p>
+    <% end %>
+    <% end %>
+    <form action="/users/create" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        First name: <input type="text" name="user[first_name]" > <br>
+        Last name: <input type="text" name="user[last_name]" >  <br>
+        Favorite Language: <input type="text" name="user[favorite_language]" > <br>
+        <input type="submit" name="Submit">
+    </form>
+    <a href = "/posts/index"> All Posts </a>
+<% end %>

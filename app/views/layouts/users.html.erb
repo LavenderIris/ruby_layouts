@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Dynamically add a title -->
+  <title><%= yield :title %></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+   
+  <!-- Dynamically add some Javascript -->
+ 
+</head>
+<body>
+<%= yield %>
+    
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <%= yield :left_column %>
+        </div>
+        <div class="col-md-6">
+            <%= yield :right_column %>
+        </div>
+    </div>
+</div>
+        
+
+
+</body>
+</html>
